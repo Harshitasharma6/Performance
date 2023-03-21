@@ -170,7 +170,7 @@
                                         =Sort(
                                             Filter(
                                                 'Order Headers',
-                                                IsToday('Order Date') && Salesperson.'Primary Email' = User().Email && 'Order Type' = 'Order Type (Choice)'.'Sales Order'
+                                                'Order Date'=Datetodays && Salesperson.'Primary Email' = User().Email && 'Order Type' = 'Order Type (Choice)'.'Sales Order'
                                             ),
                                             'Created On',
                                             SortOrder.Descending
@@ -506,7 +506,7 @@
                                     Items: |-
                                         =Filter(
                                             'Order Lines',
-                                            'Order Number'.'Order Type' = 'Order Type (Choice)'.'Replacement Order' && IsToday('Order Number'.'Order Date') && Salesperson.'Primary Email' = User().Email
+                                            'Order Number'.'Order Type' = 'Order Type (Choice)'.'Replacement Order' && 'Order Number'.'Order Date'= Datetodays && Salesperson.'Primary Email' = User().Email
                                         )
                                     Layout: =Layout.Vertical
                                     LayoutMinHeight: =287
@@ -799,7 +799,7 @@
                                     Items: |-
                                         =Filter(
                                             Payments,
-                                            IsToday('Receipt Date'),
+                                            'Receipt Date'=Datetodays,
                                             Salesperson.'Primary Email' = User().Email
                                         )
                                     Layout: =Layout.Vertical
@@ -1234,7 +1234,7 @@
                                     Items: |-
                                         =Filter(
                                             'Order Lines',
-                                            IsToday('Order Number'.'Order Date') && Salesperson.'Primary Email' = User().Email && 'Order Number'.'Order Type' = 'Order Type (Choice)'.'FOC Order'
+                                            'Order Number'.'Order Date'=Datetodays && Salesperson.'Primary Email' = User().Email && 'Order Number'.'Order Type' = 'Order Type (Choice)'.'FOC Order'
                                         )
                                     Layout: =Layout.Vertical
                                     LayoutMinHeight: =287
