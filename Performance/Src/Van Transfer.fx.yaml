@@ -1179,7 +1179,7 @@
             Height: =23
             OnSelect: =Select(Parent)
             Size: =12
-            Text: |-
+            Text: |+
                 =LookUp(
                     'User Area Mappings',
                     Area.Area = LookUp(
@@ -1190,6 +1190,9 @@
                         ).'To Location'.Warehouse
                     ).Area.Area
                 ).Salesperson.'Full Name'
+                
+                
+                
             Width: =220
             X: =400
             Y: =70
