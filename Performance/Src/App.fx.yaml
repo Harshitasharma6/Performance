@@ -55,6 +55,13 @@ App As appinfo:
         Reset(txtLoginPassword);
         ///////////////////////////******SAVE DATA*****////////////////////////////
         Set(
+            branchuseroffline,
+            LookUp(
+                Users,
+                'Primary Email' = User().Email
+            ).'Branch Master'.'Branch Master'
+        );
+        Set(
             Datetodays,
             Date(
                 Year(Today()),
@@ -184,16 +191,16 @@ App As appinfo:
                     colOfflineUsers,
                     Filter(
                         Users,
-                        'Branch Master'.'Branch Master' = LookUp(
-                            Users,
-                            'Primary Email' = User().Email
-                        ).'Branch Master'.'Branch Master'
+                        'Branch Master'.'Branch Master' = branchuseroffline
                     )
                 );
                 ,
                 ClearCollect(
                     colOfflineAreas,
-                    Areas
+                    Filter(
+                        Areas,
+                        ' Site/Branch '.'Branch Master' = branchuseroffline
+                    )
                 );
                 ,
                 ClearCollect(
@@ -215,9 +222,8 @@ App As appinfo:
                     colOfflineCustomerVisits,
                     Filter(
                         Visits,
-                        'Visit Date' = Today() && 'Owning User'.'Primary Email'= User().Email
-                        )
-                    
+                        'Visit Date' = Today() && 'Owning User'.'Primary Email' = User().Email
+                    )
                 );
                 ,
                 ClearCollect(
@@ -477,7 +483,7 @@ App As appinfo:
             colOfflineCurrentStock,
             Filter(
                 'Current Stocks',
-                 'Created Date' = Datetodays && 'Van No'.Warehouse = varUserVanNo.Van.Warehouse 
+                'Created Date' = Datetodays && 'Van No'.Warehouse = varUserVanNo.Van.Warehouse
             )
         );
         ClearCollect(
