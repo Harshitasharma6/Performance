@@ -799,7 +799,7 @@
                                     Items: |-
                                         =Filter(
                                             Payments,
-                                            IsToday('Receipt Date'),
+                                            'Receipt Date'= Datetodays,
                                             Salesperson.'Primary Email' = User().Email
                                         )
                                     Layout: =Layout.Vertical
